@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+
+int main ()
+{
+
+	int dager;
+	const int DAGER1 = 28, DAGER2 = 31;
+	int nedbor = 0;
+	float tempMax = 0;
+	float tempMin = 0;
+	int input, input2, input3;
+	float nedborGj;
+	bool i = false;
+	char x;
+		
+	do{
+		cout << "Tast inn antall dager i måneden: ";
+		cin >> dager;
+		if (dager >= DAGER1 && dager <= DAGER2 ){
+			i = true;
+			cout << "akseptabelt antall dager \n";
+		}
+		else{
+			cout << "uakseptabelt antall dager \n";
+		}
+		
+	}while (!i);
+
+	for (int l=0; l < dager; l++){
+		cout << "Tast inn dagens minste temperatur: ";
+		cin >> input;
+		if (input >= -70 && input <=70){
+			tempMin += input;
+		}
+		else {
+			cout << "løgn!\n";
+		}
+		cout << "Tast inn dagens høyeste temperatur: ";
+		cin >> input2;
+		if (input2 >= input && input2 <=70){
+			tempMax += input2;
+		}
+		else{
+			cout << "løgn!\n";
+		}
+		cout << "Tast inn dagens nedbørmengde: ";
+		cin >> input3;
+		if (input3 >= 0 && input3 <= 200){
+			nedbor += input3;
+		}
+		else{
+			cout << "løgn! \n";
+		}
+	}
+
+
+	
+	tempMin = tempMin / dager;
+	tempMax = tempMax / dager;
+
+	cout << "Total mengde nedbør: " << nedbor << endl;
+	nedbor = nedbor / dager;
+	cout << "Gjenomsnittlig nedbør per dag: " << nedbor << endl;
+	cout << "Den gjennomsnittlige høyeste temperaturen er: " << tempMax << endl;
+	cout << "Den gjennomsnittlige minste temperaturen er: " <<tempMin << endl;
+	cout << endl;
+	cout << "Vil du lese inn enda en måned? (y/n)" << endl;
+	cin >> x;
+		if (x == 'y'){
+			main ();
+		}
+		else{
+			system ("exit");
+		}
+	system ("pause");
+	return 0;
+}
